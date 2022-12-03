@@ -1,2 +1,4 @@
-﻿  main.c
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\Mise_a_niveau\main.c(1,10): fatal error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
+﻿main.obj : error LNK2019: symbole externe non résolu __imp__sfRenderWindow_create référencé dans la fonction _main
+main.obj : error LNK2019: symbole externe non résolu __imp__sfRenderWindow_isOpen référencé dans la fonction _main
+main.obj : error LNK2019: symbole externe non résolu __imp__sfRenderWindow_display référencé dans la fonction _main
+C:\Users\Clement\source\repos\Mise_a_niveau\Debug\Mise_a_niveau.exe : fatal error LNK1120: 3 externes non résolus

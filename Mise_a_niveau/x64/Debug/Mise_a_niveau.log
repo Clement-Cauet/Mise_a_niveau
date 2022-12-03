@@ -1,1 +1,23 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Cpp.Platform.targets(67,5): error MSB8020: Les outils de génération pour v142 (ensemble d'outils de plateforme = 'v142') sont introuvables. Pour générer à l'aide des outils de génération v142, installez les outils de génération v142. Vous avez également la possibilité de mettre à niveau les outils Visual Studio actuels en sélectionnant le menu Projet ou en cliquant avec le bouton droit sur la solution, puis en sélectionnant "Recibler la solution".
+﻿  main.c
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(88,16): warning C4013: 'consoleDraw' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(131,19): warning C4013: 'windowDraw' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(140,57): warning C4013: 'verificateNbrClient' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(146,46): warning C4013: 'randomReturn' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(204,107): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(222,35): warning C4013: 'consoleQueueFrDraw' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(225,34): warning C4013: 'windowQueueFrDraw' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(229,23): warning C4013: 'meanTimeFr' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(281,95): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(294,86): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(322,35): warning C4013: 'consoleQueueEnDraw' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(325,34): warning C4013: 'windowQueueEnDraw' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(330,23): warning C4013: 'meanTimeEn' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(363,23): warning C4013: 'positionMin' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(386,23): warning C4013: 'randomGenerate' non défini(e) ; extern retournant int pris par défaut
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(573,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(586,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(592,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(605,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(634,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(640,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+  Mise_a_niveau.vcxproj -> C:\Users\Clement\source\repos\Mise_a_niveau\x64\Debug\Mise_a_niveau.exe
