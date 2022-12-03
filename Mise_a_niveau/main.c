@@ -35,6 +35,12 @@ typedef struct {
 }
 queue;
 
+//Prototype function
+float meanTimeFr(HANDLE handle, COORD coord, queue queue);
+float meanTimeEn(HANDLE handle, COORD coord, queue queue);
+float openGraphic(int duration, float mean_fr, float mean_en);
+float traceCourbe(int duration, float mean_fr, float mean_en);
+
 int main()
 {
     queue queue;
@@ -45,6 +51,7 @@ int main()
 
     int queue_fr, queue_en, mean_fr_i = 0, mean_en_i = 0;
     int duration = 0;
+    float mean_time_fr = 0, mean_time_en = 0;
 
     sfVideoMode mode = { WIDTH_WINDOW, HEIGHT_WINDOW, 32 };
     sfRenderWindow* window;
@@ -223,10 +230,12 @@ int main()
 
                 //Actualise draw in the window
                 windowQueueFrDraw(queue, queue_fr, window, sprite, void_texture, desk_texture, client_texture, seller_texture);
+
             }
 
             //Actualise the mean time fr
-            meanTimeFr(handle, coord, queue);
+            mean_time_fr = meanTimeFr(handle, coord, queue);
+
         }
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Queue fr ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
@@ -327,11 +336,13 @@ int main()
             }
 
             //Actualise the mean time en
-            meanTimeEn(handle, coord, queue);
+            mean_time_en = meanTimeEn(handle, coord, queue);
 
         }
                 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Queue En ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+        openGraphic(duration, mean_time_fr, mean_time_en);
 
         //Actualise the display of the window
         sfRenderWindow_display(window);
@@ -400,7 +411,7 @@ int randomGenerate(int max) {
 }
 
 //Mean time fr
-int meanTimeFr(HANDLE handle, COORD coord, queue queue) {
+float meanTimeFr(HANDLE handle, COORD coord, queue queue) {
     
     float mean_fr = 0;
     int nbr_mean = 0;
@@ -418,11 +429,11 @@ int meanTimeFr(HANDLE handle, COORD coord, queue queue) {
     SetConsoleCursorPosition(handle, coord);
     printf("Temps moyen : %f s", mean_fr);
 
-    return 1;
+    return mean_fr;
 }
 
 //Mean time en
-int meanTimeEn(HANDLE handle, COORD coord, queue queue) {
+float meanTimeEn(HANDLE handle, COORD coord, queue queue) {
     
     float mean_en = 0;
     int nbr_mean = 0;
@@ -439,6 +450,22 @@ int meanTimeEn(HANDLE handle, COORD coord, queue queue) {
     coord.Y = 26;
     SetConsoleCursorPosition(handle, coord);
     printf("Temps moyen : %f s", mean_en);
+
+    return mean_en;
+}
+
+//Open graphic file
+float openGraphic(int duration, float mean_fr, float mean_en) {
+
+    traceCourbe(duration, mean_fr, mean_en);
+
+    return 1;
+}
+
+//Trace courbe
+float traceCourbe(int duration, float mean_fr, float mean_en) {
+
+
 
     return 1;
 }
