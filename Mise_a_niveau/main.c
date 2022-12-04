@@ -31,15 +31,29 @@ typedef struct {
     //Mean table
     int mean_fr_tab[1000];
     int mean_en_tab[1000];
+    float mean_time_fr_tab[1000];
+    float mean_time_en_tab[1000];
 
 }
 queue;
 
 //Prototype function
-float meanTimeFr(HANDLE handle, COORD coord, queue queue);
-float meanTimeEn(HANDLE handle, COORD coord, queue queue);
-float openGraphic(int duration, float mean_fr, float mean_en);
-float traceCourbe(int duration, float mean_fr, float mean_en);
+int     verificateNbrClient(queue queue, int queue_fr);
+int     positionMin(int nbr_client_tab[]);
+int     randomReturn(int probability);
+int     randomGenerate(int max);
+float   meanTimeFr(HANDLE handle, COORD coord, queue queue);
+float   meanTimeEn(HANDLE handle, COORD coord, queue queue);
+int     initGraphic(FILE* file_plot);
+int     openGraphic(FILE* file_plot, int duration, queue queue);
+int     traceCourbe(FILE* file_plot, int duration);
+int     consoleDraw(HANDLE handle, COORD coord);
+int     consoleQueueFrDraw(queue queue, int queue_fr, HANDLE handle, COORD coord);
+int     consoleQueueEnDraw(queue queue, int queue_en, HANDLE handle, COORD coord);
+int     windowDraw(sfRenderWindow* window, sfSprite* sprite, sfTexture* queue_fr_text, sfTexture* queue_en_text);
+int     windowQueueFrDraw(queue queue, int queue_fr, sfRenderWindow* window, sfSprite* sprite, sfTexture* void_texture, sfTexture* desk_texture, sfTexture* client_texture, sfTexture* seller_texture);
+int     windowQueueEnDraw(queue queue, int queue_en, sfRenderWindow* window, sfSprite* sprite, sfTexture* void_texture, sfTexture* desk_texture, sfTexture* client_texture, sfTexture* seller_texture);
+
 
 int main()
 {
@@ -92,7 +106,11 @@ int main()
     sprite = sfSprite_create();
 
     //Draw in the console
-    consoleDraw(handle, coord);
+    consoleDraw(handle, coord);  
+
+    //Create a graphic with gnuplot
+    FILE* file_plot = _popen("C:/gnuplot/bin/gnuplot", "w");
+    initGraphic(file_plot);
 
     //Initialise queue fr table
     for (queue_fr = 0; queue_fr < NB_TAB; queue_fr++) {
@@ -120,7 +138,10 @@ int main()
 
     //Initialise mean table
     for (int i = 0; i < 1000; i++) {
+        queue.mean_fr_tab[i] = 0;
         queue.mean_en_tab[i] = 0;
+        queue.mean_time_fr_tab[i] = -1;
+        queue.mean_time_en_tab[i] = -1;
     }
 
     while (sfRenderWindow_isOpen(window)) {
@@ -236,6 +257,13 @@ int main()
             //Actualise the mean time fr
             mean_time_fr = meanTimeFr(handle, coord, queue);
 
+            for (int i = 0; 1; i++) {
+                if (queue.mean_time_fr_tab[i] == -1) {
+                    queue.mean_time_fr_tab[i] = mean_time_fr;
+                    break;
+                }
+            }
+
         }
 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Queue fr ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
@@ -338,11 +366,18 @@ int main()
             //Actualise the mean time en
             mean_time_en = meanTimeEn(handle, coord, queue);
 
+            for (int i = 0; 1; i++) {
+                if (queue.mean_time_en_tab[i] == -1) {
+                    queue.mean_time_en_tab[i] = mean_time_en;
+                    break;
+                }
+            }
+
         }
                 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Queue En ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
-        openGraphic(duration, mean_time_fr, mean_time_en);
+        openGraphic(file_plot, duration, queue);
 
         //Actualise the display of the window
         sfRenderWindow_display(window);
@@ -449,23 +484,66 @@ float meanTimeEn(HANDLE handle, COORD coord, queue queue) {
     coord.X = 0;
     coord.Y = 26;
     SetConsoleCursorPosition(handle, coord);
-    printf("Temps moyen : %f s", mean_en);
+    printf("Temps moyen : %f s\n", mean_en);
 
     return mean_en;
 }
 
-//Open graphic file
-float openGraphic(int duration, float mean_fr, float mean_en) {
+//Initialisation graphic option
+int initGraphic(FILE* file_plot) {
 
-    traceCourbe(duration, mean_fr, mean_en);
+    fprintf(file_plot, "set term wxt persist; \n");
+    fprintf(file_plot, "set grid; \n");
+    fprintf(file_plot, "set key box; \n");
+
+    fprintf(file_plot, "set size 1,1; \n");
+    fprintf(file_plot, "set origin 0.0,0.0; \n");
+
+    return 1;
+}
+
+//Open graphic file
+int openGraphic(FILE* file_plot, int duration, queue queue) {
+
+    FILE* file_data = fopen("src/courbe/data.txt", "w");
+
+    if (file_data != NULL) {
+
+        for (int i = 0; i < duration && queue.mean_time_fr_tab[i] != -1 && queue.mean_time_en_tab[i] != -1; i++) {
+            fprintf(file_data, "%d\t%f\t%f\n", i, queue.mean_time_fr_tab[i], queue.mean_time_en_tab[i]);
+        }
+        
+        fclose(file_data);
+
+        traceCourbe(file_plot, duration);
+
+    }
+    else
+        return EXIT_FAILURE;
 
     return 1;
 }
 
 //Trace courbe
-float traceCourbe(int duration, float mean_fr, float mean_en) {
+int traceCourbe(FILE* file_plot, int duration) {
 
+    if (file_plot != NULL) {
 
+        fprintf(file_plot, "set xrange[0:%d]; \n", duration);
+        fprintf(file_plot, "set yrange[0:20]; \n");
+
+        fprintf(file_plot, "set multiplot; \n");
+        
+        fprintf(file_plot, "plot   'src/courbe/data.txt' u 1:2 title 'File francaise' w lp lt rgb 'red' lw 2 axes x1y1; \n");
+        fprintf(file_plot, "plot   'src/courbe/data.txt' u 1:3 title 'File anglaise' w lp lt rgb 'green' lw 2 axes x1y1; \n");
+
+        fprintf(file_plot, "unset multiplot; \n");
+
+        fflush(file_plot);
+
+    }
+    else
+        return EXIT_FAILURE;
 
     return 1;
 }

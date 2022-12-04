@@ -1,21 +1,11 @@
 ﻿  main.c
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(94,16): warning C4013: 'consoleDraw' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(137,19): warning C4013: 'windowDraw' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(146,57): warning C4013: 'verificateNbrClient' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(152,46): warning C4013: 'randomReturn' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(210,107): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(228,35): warning C4013: 'consoleQueueFrDraw' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(231,34): warning C4013: 'windowQueueFrDraw' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(289,95): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(302,86): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(330,35): warning C4013: 'consoleQueueEnDraw' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(333,34): warning C4013: 'windowQueueEnDraw' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(373,23): warning C4013: 'positionMin' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(396,23): warning C4013: 'randomGenerate' non défini(e) ; extern retournant int pris par défaut
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(599,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(612,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(618,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(631,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(660,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(666,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(232,107): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(318,95): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(331,86): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(678,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(691,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(697,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(710,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(739,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(745,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
   Mise_a_niveau.vcxproj -> C:\Users\Clement\source\repos\Mise_a_niveau\x64\Debug\Mise_a_niveau.exe
