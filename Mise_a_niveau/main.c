@@ -45,8 +45,8 @@ int     randomGenerate(int max);
 float   meanTimeFr(HANDLE handle, COORD coord, queue queue);
 float   meanTimeEn(HANDLE handle, COORD coord, queue queue);
 int     initGraphic(FILE* file_plot);
-int     openGraphic(FILE* file_plot, int duration, queue queue);
-int     traceCourbe(FILE* file_plot, int duration);
+int     openGraphic(FILE* file_plot, queue queue, int duration);
+int     traceCourbe(FILE* file_plot, queue queue, int duration);
 int     consoleDraw(HANDLE handle, COORD coord);
 int     consoleQueueFrDraw(queue queue, int queue_fr, HANDLE handle, COORD coord);
 int     consoleQueueEnDraw(queue queue, int queue_en, HANDLE handle, COORD coord);
@@ -377,7 +377,7 @@ int main()
                 
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Queue En ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
-        openGraphic(file_plot, duration, queue);
+        openGraphic(file_plot, queue, duration);
 
         //Actualise the display of the window
         sfRenderWindow_display(window);
@@ -494,6 +494,9 @@ int initGraphic(FILE* file_plot) {
 
     fprintf(file_plot, "set term wxt persist; \n");
     fprintf(file_plot, "set grid; \n");
+    fprintf(file_plot, "set title 'Moyenne de temps des clients dans la file en fonction du temps'; \n");
+    fprintf(file_plot, "set xlabel 'Temps execution'; \n");
+    fprintf(file_plot, "set ylabel 'Temps moyen'; \n");
     fprintf(file_plot, "set key box; \n");
 
     fprintf(file_plot, "set size 1,1; \n");
@@ -503,19 +506,21 @@ int initGraphic(FILE* file_plot) {
 }
 
 //Open graphic file
-int openGraphic(FILE* file_plot, int duration, queue queue) {
+int openGraphic(FILE* file_plot, queue queue, int duration) {
 
     FILE* file_data = fopen("src/courbe/data.txt", "w");
 
     if (file_data != NULL) {
 
-        for (int i = 0; i < duration && queue.mean_time_fr_tab[i] != -1 && queue.mean_time_en_tab[i] != -1; i++) {
-            fprintf(file_data, "%d\t%f\t%f\n", i, queue.mean_time_fr_tab[i], queue.mean_time_en_tab[i]);
+        int last_mean = 0;
+
+        for (int last_mean = 0; last_mean < duration && queue.mean_time_fr_tab[last_mean] != -1 && queue.mean_time_en_tab[last_mean] != -1; last_mean++) {
+            fprintf(file_data, "%d\t%f\t%f\n", last_mean, queue.mean_time_fr_tab[last_mean], queue.mean_time_en_tab[last_mean]);
         }
         
         fclose(file_data);
 
-        traceCourbe(file_plot, duration);
+        traceCourbe(file_plot, queue, duration);
 
     }
     else
@@ -525,7 +530,9 @@ int openGraphic(FILE* file_plot, int duration, queue queue) {
 }
 
 //Trace courbe
-int traceCourbe(FILE* file_plot, int duration) {
+int traceCourbe(FILE* file_plot, queue queue, int duration) {
+
+    float high_mean = 0;
 
     if (file_plot != NULL) {
 
@@ -534,8 +541,8 @@ int traceCourbe(FILE* file_plot, int duration) {
 
         fprintf(file_plot, "set multiplot; \n");
         
-        fprintf(file_plot, "plot   'src/courbe/data.txt' u 1:2 title 'File francaise' w lp lt rgb 'red' lw 2 axes x1y1; \n");
-        fprintf(file_plot, "plot   'src/courbe/data.txt' u 1:3 title 'File anglaise' w lp lt rgb 'green' lw 2 axes x1y1; \n");
+        fprintf(file_plot, "plot    'src/courbe/data.txt' u 1:2 title 'File Francaise' w lp lt rgb 'blue' lw 2 axes x1y1, ");
+        fprintf(file_plot, "        'src/courbe/data.txt' u 1:3 title 'File Anglaise' w lp lt rgb 'red' lw 2 axes x1y1; \n");
 
         fprintf(file_plot, "unset multiplot; \n");
 

@@ -2,10 +2,10 @@
 C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(232,107): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
 C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(318,95): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
 C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(331,86): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(678,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(691,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(697,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(710,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(739,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(745,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(685,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(698,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(704,59): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(717,54): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(746,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Clement\source\repos\Mise_a_niveau\Mise_a_niveau\main.c(752,58): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
   Mise_a_niveau.vcxproj -> C:\Users\Clement\source\repos\Mise_a_niveau\x64\Debug\Mise_a_niveau.exe
